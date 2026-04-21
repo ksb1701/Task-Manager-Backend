@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import taskRoutes from './routes/taskRoute';
+import taskRoutes from './routes/taskRoute.js';
 import mongoose from 'mongoose';
 
 const app = express();
