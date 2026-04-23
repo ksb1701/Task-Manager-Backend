@@ -2,7 +2,7 @@ import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
 
-import taskRoutes from './routes/taskRoute.js';
+import taskRoutes from './routes/taskRoutes.js';
 
 const app = express();
 
