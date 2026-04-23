@@ -1,16 +1,16 @@
 import express from 'express';
 
-import Project from "../models/Project.js";
+import User from "../models/User.js";
 import whichError from '../utils/errorHandler.js';
 
 const router = express.Router();
 
 router.post('/', async (req, res) => {
   try {
-    const projectData = req.body;
-    const newProject = await Project.create(projectData);
+    const userData = req.body;
+    const newUser = await User.create(userData);
 
-    res.status(201).json(newProject);
+    res.status(201).json(newUser);
   } catch (error) {
     if (error instanceof Error)
       whichError(error, res);
@@ -21,9 +21,9 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const projects = await Project.find({});
+    const users = await User.find({});
 
-    res.status(200).json(projects);
+    res.status(200).json(users);
   } catch (error) {
     if (error instanceof Error)
       whichError(error, res);
@@ -36,9 +36,9 @@ router.put('/:id', async (req, res) => {
   try {
     console.log("Incoming PUT data:", req.body);
     const _id = req.params.id;
-    const updatedProject = await Project.findByIdAndUpdate(_id, req.body, { returnDocument: 'after' });
+    const updatedUser = await User.findByIdAndUpdate(_id, req.body, { returnDocument: 'after' });
 
-    res.status(200).json(updatedProject);
+    res.status(200).json(updatedUser);
   } catch (error) {
     if (error instanceof Error)
       whichError(error, res);
@@ -50,9 +50,9 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     const _id = req.params.id;
-    const deletedProject = await Project.findByIdAndDelete(_id);
+    const deletedUser = await User.findByIdAndDelete(_id);
 
-    res.status(200).json(deletedProject);
+    res.status(200).json(deletedUser);
   } catch (error) {
     if (error instanceof Error)
       whichError(error, res);
