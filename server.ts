@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 
 import projectRoutes from './routes/projectRoutes.js'
 import taskRoutes from './routes/taskRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 
 app.use('/api/tasks', taskRoutes);
 app.use('/api/projects', projectRoutes);
+app.use('/api/users', userRoutes);
 
 app.get('/health', (req, res) => {
   res.json({ message: "something" });

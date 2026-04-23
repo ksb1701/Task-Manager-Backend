@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const projects = await Project.find({});
+    const projects = await Project.find({}).populate('assignedUsers');
 
     res.status(200).json(projects);
   } catch (error) {

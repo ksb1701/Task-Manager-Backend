@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const tasks = await Task.find({}).populate('project');
+    const tasks = await Task.find({}).populate('project assignedTo');
 
     res.status(200).json(tasks);
   } catch (error) {
