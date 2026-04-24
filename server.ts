@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
@@ -20,10 +22,12 @@ app.get('/health', (req, res) => {
   res.json({ message: "something" });
 });
 
-mongoose.connect('mongodb://127.0.0.1:27017/task-manager')
+mongoose.connect(`${process.env.MONGO_URI}task-manager`)
   .then(() => console.log('Connected to MongoDB!'))
   .catch((err) => console.log('Database connection failed:', err));
 
 app.listen(4000, () => {
   console.log("Server is running!");
 });
+
+export default app;
