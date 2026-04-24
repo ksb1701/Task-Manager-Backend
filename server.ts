@@ -26,8 +26,8 @@ mongoose.connect(`${process.env.MONGO_URI}task-manager`)
   .then(() => console.log('Connected to MongoDB!'))
   .catch((err) => console.log('Database connection failed:', err));
 
-app.listen(4000, () => {
-  console.log("Server is running!");
-});
+// app.listen(4000, () => {
+//   console.log("Server is running!");
+// });
 
 export default app;
