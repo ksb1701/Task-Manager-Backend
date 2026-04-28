@@ -65,6 +65,7 @@ export const loginUser = async (req: Request, res: Response) => {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
+      partitioned: process.env.NODE_ENV === 'production',
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
@@ -107,7 +108,8 @@ export const logoutUser = (req: Request, res: Response) => {
   res.clearCookie('taskflow_token', {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
-    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict'
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
+    partitioned: process.env.NODE_ENV === 'production'
   });
 
   res.status(200).json({ message: 'Logged out successfully' });
